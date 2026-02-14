@@ -11,6 +11,6 @@ public class UnsupportedCallException extends RuntimeException {
 
         StackTraceElement caller =  stackTrace[3];
 
-        return caller.getClassName() + "." + caller.getMethodName() + " must not be called.";
+        return caller.getClassName() + "." + caller.getMethodName() + "() method is must not be called.";
     }
 }
