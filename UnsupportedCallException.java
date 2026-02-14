@@ -7,7 +7,7 @@ public class UnsupportedCallException extends RuntimeException {
     }
 
     private static String buildMessage() {
-    return StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
+        return StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
             .walk(stream -> stream
                     .dropWhile(f -> f.getDeclaringClass() == UnsupportedCallException.class)
                     .findFirst()
