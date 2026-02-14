@@ -7,10 +7,10 @@ public class UnsupportedCallException extends RuntimeException {
     }
 
     private static String buildMessage() {
-        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-
-        StackTraceElement caller =  stackTrace[3];
-
-        return caller.getClassName() + "." + caller.getMethodName() + "() method is must not be called.";
+    return StackWalker.getInstance()
+            .walk(s -> s.skip(2) 
+                        .findFirst()
+                        .map(f -> f.getClassName() + "." + f.getMethodName() + "() must not be called.")
+                        .orElse("Unknown method must not be called."));
     }
 }
